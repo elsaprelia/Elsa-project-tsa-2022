@@ -18,28 +18,24 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
 
-  signIn()async{
+  signIn() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text
-      );
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
       var authCredential = userCredential.user;
       print(authCredential!.uid);
-      if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController()));
-      }
-      else{
+      if (authCredential.uid.isNotEmpty) {
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (_) => BottomNavController()));
+      } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Fluttertoast.showToast(msg: "No user found for that email.");
-
       } else if (e.code == 'wrong-password') {
         Fluttertoast.showToast(msg: "Wrong password provided for that user.");
-
       }
     } catch (e) {
       print(e);
@@ -218,9 +214,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 50.h,
                         ),
                         // elevated button
-                        customButton("Sign In", (){
-                          signIn();
-                        },),
+                        customButton(
+                          "Sign In",
+                          () {
+                            signIn();
+                          },
+                        ),
                         SizedBox(
                           height: 20.h,
                         ),
