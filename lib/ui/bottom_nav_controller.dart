@@ -42,15 +42,19 @@ class _BottomNavControllerState extends State<BottomNavController> {
             TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         items: [
           BottomNavigationBarItem(
+            label: "Home",
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
+            label: "Favorite",
             icon: Icon(Icons.favorite_outline),
           ),
           BottomNavigationBarItem(
+            label: "Cart",
             icon: Icon(Icons.add_shopping_cart),
           ),
           BottomNavigationBarItem(
+            label: "Profile",
             icon: Icon(Icons.person),
           ),
         ],
