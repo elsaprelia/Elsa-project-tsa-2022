@@ -94,12 +94,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           height: 20.h,
                         ),
                         Text(
-                          "Welcome Buddy!",
+                          "Welcome!",
                           style: TextStyle(
                               fontSize: 22.sp, color: AppColors.deep_orange),
                         ),
                         Text(
-                          "Glad to see you back my buddy.",
+                          "Welcome Mulyorejo Lovers",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: Color(0xFFBBBBBB),

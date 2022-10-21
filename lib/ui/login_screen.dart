@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 22.sp, color: AppColors.deep_orange),
                         ),
                         Text(
-                          "Wellcome Back Mulyorejo Lovers.",
+                          "Welcome Back Mulyorejo Lovers.",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: Color(0xFFBBBBBB),
