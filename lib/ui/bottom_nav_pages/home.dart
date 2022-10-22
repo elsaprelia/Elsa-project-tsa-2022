@@ -25,9 +25,9 @@ class _HomeState extends State<Home> {
     setState(() {
       for (int i = 0; i < qn.docs.length; i++) {
         _carouselImages.add(
-          qn.docs[i]["img-path"],
+          qn.docs[i]["slider"],
         );
-        print(qn.docs[i]["img-path"]);
+        print(qn.docs[i]["slider"]);
       }
     });
 
@@ -137,7 +137,11 @@ class _HomeState extends State<Home> {
                       crossAxisCount: 2, childAspectRatio: 1),
                   itemBuilder: (_, index) {
                     return GestureDetector(
-                      onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails(_products[index]))),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  ProductDetails(_products[index]))),
                       child: Card(
                         elevation: 3,
                         child: Column(
