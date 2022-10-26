@@ -13,7 +13,6 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-
   Future addToCart() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
@@ -34,7 +33,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
     CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection("users-favourite-items");
+        FirebaseFirestore.instance.collection("users-favourite-items");
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
@@ -66,10 +65,14 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         actions: [
           StreamBuilder(
-            stream: FirebaseFirestore.instance.collection("users-favourite-items").doc(FirebaseAuth.instance.currentUser!.email)
-                .collection("items").where("name",isEqualTo: widget._product['product-name']).snapshots(),
-            builder: (BuildContext context, AsyncSnapshot snapshot){
-              if(snapshot.data==null){
+            stream: FirebaseFirestore.instance
+                .collection("users-favourite-items")
+                .doc(FirebaseAuth.instance.currentUser!.email)
+                .collection("items")
+                .where("name", isEqualTo: widget._product['product-name'])
+                .snapshots(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
                 return Text("");
               }
               return Padding(
@@ -77,19 +80,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: CircleAvatar(
                   backgroundColor: Colors.red,
                   child: IconButton(
-                    onPressed: () => snapshot.data.docs.length==0?addToFavourite():print("Already Added"),
-                    icon: snapshot.data.docs.length==0? Icon(
-                      Icons.favorite_outline,
-                      color: Colors.white,
-                    ):Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    ),
+                    onPressed: () => snapshot.data.docs.length == 0
+                        ? addToFavourite()
+                        : print("Already Added"),
+                    icon: snapshot.data.docs.length == 0
+                        ? Icon(
+                            Icons.favorite_outline,
+                            color: Colors.white,
+                          )
+                        : Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                          ),
                   ),
                 ),
               );
             },
-
           ),
         ],
       ),
@@ -131,7 +137,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: 10,
             ),
             Text(
-              "\$ ${widget._product['product-price'].toString()}",
+              "\Rp ${widget._product['product-price'].toString()}",
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: 30, color: Colors.red),
             ),
