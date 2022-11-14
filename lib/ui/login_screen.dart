@@ -8,6 +8,8 @@ import 'package:flutter_ecommerce/widgets/customButton.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'admin_nav_controller.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -24,10 +26,15 @@ class _LoginScreenState extends State<LoginScreen> {
           .signInWithEmailAndPassword(
               email: _emailController.text, password: _passwordController.text);
       var authCredential = userCredential.user;
-      print(authCredential!.uid);
+      print(authCredential!);
       if (authCredential.uid.isNotEmpty) {
-        Navigator.push(
-            context, CupertinoPageRoute(builder: (_) => BottomNavController()));
+        if (_emailController.text == "admin@gmail.com") {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (_) => AdminNavController()));
+        } else {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (_) => BottomNavController()));
+        }
       } else {
         Fluttertoast.showToast(msg: "Something is wrong");
       }

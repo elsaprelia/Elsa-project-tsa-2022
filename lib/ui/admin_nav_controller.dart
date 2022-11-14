@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/const/AppColors.dart';
-import 'package:flutter_ecommerce/ui/bottom_nav_pages/home.dart';
+import 'package:flutter_ecommerce/ui/admin_nav_pages/homeadmin.dart';
 
 class AdminNavController extends StatefulWidget {
   @override
