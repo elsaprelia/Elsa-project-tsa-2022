@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/const/AppColors.dart';
 import 'package:flutter_ecommerce/ui/admin_nav_pages/homeadmin.dart';
+import 'package:flutter_ecommerce/ui/bottom_nav_pages/profile.dart';
 
 class AdminNavController extends StatefulWidget {
   @override
@@ -9,7 +10,8 @@ class AdminNavController extends StatefulWidget {
 
 class _AdminNavControllerState extends State<AdminNavController> {
   final _pages = [
-    Home(),
+    HomeAdmin(),
+    Profile(),
   ];
   var _currentIndex = 0;
 
@@ -38,6 +40,10 @@ class _AdminNavControllerState extends State<AdminNavController> {
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: "Profile",
+            icon: Icon(Icons.person),
           ),
         ],
         onTap: (index) {
